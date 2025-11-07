@@ -1,0 +1,3010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedal Legacy - Premium Bicycles & Gear</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0F0E0E;
+            color: #0F0E0E;
+            line-height: 1.2;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #0F0E0E;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .top-bar {
+            background-color: #0F0E0E;
+            color: black;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 40px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: 900;
+            color: #e74c3c;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #2c3e50;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin: 0 20px;
+            position: relative;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: #2c3e50;
+            padding: 10px 0;
+            transition: color 0.3s;
+            text-decoration: none;
+        }
+
+        .nav-link:hover {
+            color: #e74c3c;
+        }
+
+        .nav-link.active {
+            color: #e74c3c;
+            border-bottom: 2px solid #e74c3c;
+        }
+
+        .icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .icon {
+            margin-left: 20px;
+            font-size: 20px;
+            cursor: pointer;
+            position: relative;
+            color: #FF8C00;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #FF8C00;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Enhanced Hero Section with Dynamic Background */
+        .hero {
+            height: 900px;
+            position: relative;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        .hero-background-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 1.5s ease-in-out;
+            transform: translateX(0);
+        }
+
+        .hero-background.next {
+            transform: translateX(100%);
+        }
+
+        .hero-background.active {
+            transform: translateX(0);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+            transform-style: preserve-3d;
+            animation: float 6s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotateX(5deg) rotateY(5deg); }
+            50% { transform: translateY(-20px) rotateX(-5deg) rotateY(-5deg); }
+        }
+
+        .hero h1 {
+            font-size: 70px;
+            margin-bottom: 30px;
+            text-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            transform: translateZ(50px);
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #e74c3c, #ff0000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 22px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            transform: translateZ(30px);
+            font-weight: 600;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            color: #f8f9fa;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            display: inline-block;
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+            transform: translateZ(40px);
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) translateZ(40px);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.6);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #2c3e50, #1a252f);
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #1a252f, #2c3e50);
+        }
+
+        /* Moved Quote Section - Centered without black background */
+        .quote-section {
+            max-width: 700px;
+            margin: 20px auto 30px;
+            text-align: middle;
+            transform: translateZ(20px);
+            color: white;
+            font-style: italic;
+            font-size: 25px;
+            text-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            font-weight: 400;
+            padding: 30px;
+        }
+
+        /* Moving Text Banner */
+        .moving-text-container {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: rgba(231, 76, 60, 0.8);
+            overflow: hidden;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .moving-text {
+            white-space: nowrap;
+            animation: moveText 25s linear infinite;
+            color: white;
+            font-weight: 600;
+            padding-left: 100%;
+            font-size: 18px;
+        }
+
+        @keyframes moveText {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+
+        /* New Sections: Adventures, History, Achievements */
+        .features-section {
+            padding: 80px 0;
+            background-color: #0F0E0E;
+        }
+
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            text-align: center;
+            padding: 30px 20px;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+        }
+
+        .feature-info {
+            padding: 25px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-info h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: white;
+        }
+        .feature-card .btn {
+            padding: 10px 10px;
+            font-size: 14px;
+            min-width: 140px;
+            text-align: center;
+            display: inline-block;
+            width: 100%;
+            max-width: 180px;
+        }
+
+        .feature-info p {
+            color: #f8f9fa;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Main Content Sections */
+        .section {
+            padding: 80px 0;
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: white;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #ccc;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Product Grid - Centered with 3 items */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            transform-style: preserve-3d;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+        }
+
+        .product-img {
+            height: 300px;
+            background-color: #2a2a2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .product-price {
+            color: #e74c3c;
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: transparent;
+            color: #fff;
+            padding: 5px 0 5px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 10px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1001;
+            overflow-y: auto;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 50px 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            max-width: 900px;
+            width: 100%;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #7f8c8d;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #e74c3c;
+        }
+
+        .modal-body {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .modal-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .modal-image img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .modal-details {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .modal-details h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .modal-description {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .specs-list {
+            margin-bottom: 25px;
+        }
+
+        .specs-list li {
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed #333;
+            padding-bottom: 8px;
+        }
+
+        .spec-name {
+            font-weight: 600;
+            color: white;
+        }
+
+        .spec-value {
+            color: #ccc;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .quantity-label {
+            margin-right: 15px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            border: 1px solid #444;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .quantity-btn {
+            background: #333;
+            border: none;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: white;
+        }
+
+        .quantity-input {
+            width: 50px;
+            height: 30px;
+            border: none;
+            text-align: center;
+            font-weight: 600;
+            background: #222;
+            color: white;
+        }
+
+        /* Enhanced Cart Modal Styles */
+        .cart-modal .modal-content {
+            max-width: 800px;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 15px;
+        }
+
+        .cart-items {
+            margin-bottom: 30px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+            position: relative;
+        }
+
+        .cart-item-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 20px;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .cart-item-price {
+            color: #e74c3c;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .quantity-controls-small {
+            display: flex;
+            align-items: center;
+            border: 1px solid #444;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+
+        .quantity-btn-small {
+            background: #333;
+            border: none;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: white;
+        }
+
+        .quantity-input-small {
+            width: 40px;
+            height: 25px;
+            border: none;
+            text-align: center;
+            font-weight: 600;
+            background: #222;
+            color: white;
+        }
+
+        .cart-item-remove {
+            color: #e74c3c;
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-left: auto;
+        }
+
+        .cart-item-total {
+            font-weight: 600;
+            color: white;
+        }
+
+        .cart-summary {
+            border-top: 2px solid #333;
+            padding-top: 20px;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .cart-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Customer Form Styles */
+        .customer-form {
+            margin-top: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            font-size: 16px;
+            background: #222;
+            color: white;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        /* Payment Methods */
+        .payment-methods {
+            margin: 20px 0;
+        }
+
+        .payment-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .payment-option {
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+            padding: 15px;
+            border: 2px solid #444;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: white;
+        }
+
+        .payment-option.selected {
+            border-color: #e74c3c;
+            background-color: rgba(231, 76, 60, 0.1);
+        }
+
+        .payment-icon {
+            height: 40px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .payment-icon img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .payment-option.selected .payment-icon {
+            color: #e74c3c;
+        }
+
+        .payment-details {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-top: 5px;
+            display: none;
+        }
+
+        /* Payment Details Section */
+        .payment-details-section {
+            background: #222;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid #333;
+            display: none;
+        }
+
+        .payment-details-section.active {
+            display: block;
+        }
+
+        .payment-details-section h4 {
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .payment-info {
+            margin-bottom: 15px;
+        }
+
+        .payment-info p {
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        .payment-info strong {
+            color: white;
+        }
+
+        /* Checkout Modal Styles */
+        .checkout-modal .modal-content {
+            max-width: 600px;
+        }
+
+        .checkout-summary {
+            background: #222;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .checkout-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        .checkout-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 18px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #444;
+            color: white;
+        }
+
+        /* Story Modal Styles */
+        .story-modal .modal-content {
+            max-width: 800px;
+        }
+
+        .story-modal .modal-body {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .story-modal .modal-image {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .story-modal .modal-details {
+            width: 100%;
+        }
+
+        .story-modal .modal-description {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        /* Profile Section Styles - UPDATED */
+        .profile-section {
+            padding: 80px 0;
+            background-color: #0F0E0E;
+        }
+
+        .profile-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #1a1a1a;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: #333;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #e74c3c;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-avatar-upload {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px;
+            text-align: center;
+            font-size: 12px;
+            cursor: pointer;
+            display: block;
+            color: white;
+        }
+
+        .profile-avatar-remove {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: rgba(231, 76, 60, 0.8);
+            color: white;
+            border: none;
+            padding: 5px;
+            border-radius: 0 0 0 8px;
+            cursor: pointer;
+            font-size: 12px;
+            display: none;
+        }
+
+        .profile-avatar:hover .profile-avatar-remove {
+            display: block;
+        }
+
+        .profile-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .profile-field {
+            margin-bottom: 20px;
+        }
+
+        .profile-label {
+            font-weight: 600;
+            color: #e74c3c;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .profile-value {
+            color: white; /* Changed to white */
+            padding: 10px;
+            background: #222;
+            border-radius: 4px;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-empty {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .product-grid {
+                grid-template-columns: repeat(2, minmax(280px, 1fr));
+                max-width: 700px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 90px;
+                flex-direction: column;
+                background-color: #0F0E0E;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-item {
+                margin: 15px 0;
+            }
+
+            .hamburger {
+                display: block;
+                cursor: pointer;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .bar {
+                display: block;
+                width: 25px;
+                height: 3px;
+                margin: 5px auto;
+                transition: all 0.3s ease-in-out;
+                background-color: white;
+            }
+
+            .hero h1 {
+                font-size: 60px;
+            }
+
+            .hero p {
+                font-size: 20px;
+            }
+
+            .quote-section {
+                max-width: 90%;
+                margin: 30px auto;
+                font-size: 22px;
+            }
+
+            .modal-body {
+                flex-direction: column;
+            }
+
+            .features-container {
+                grid-template-columns: 1fr;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .payment-options {
+                flex-direction: column;
+            }
+
+            .profile-info {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .quote-section {
+                font-size: 20px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .quote-section {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="top-bar">
+            <div class="container"></div>
+        </div>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">Pedal<span>Legacy</span></a>
+
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+                    <li class="nav-item"><a href="#road-bikes" class="nav-link">Road Bikes</a></li>
+                    <li class="nav-item"><a href="#gravel-bikes" class="nav-link">Gravel Bikes</a></li>
+                    <li class="nav-item"><a href="#mountain-bikes" class="nav-link">Mountain Bikes</a></li>
+                    <li class="nav-item"><a href="#parts-accessories" class="nav-link">Parts & Accessories</a></li>
+                    <li class="nav-item"><a href="#clothing" class="nav-link">Clothing</a></li>
+                    <li class="nav-item"><a href="#profile" class="nav-link">Profile</a></li>
+                </ul>
+
+                <div class="icons">
+                    <div class="icon cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </div>
+                </div>
+
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Dynamic Background -->
+    <section id="home" class="section active">
+        <div class="hero">
+            <div class="hero-background-container" id="hero-background-container">
+                <!-- Backgrounds will be added dynamically -->
+            </div>
+            <div class="hero-content">
+                <h1>Ride The Extra Mile</h1>
+
+                <!-- Moved Quote Section - Centered without black background -->
+                <div class="quote-section">
+                    <p>"Fueling your love for bikes with the gear, guides, and stories that inspire every journey."</p>
+                </div>
+            </div>
+
+            <!-- Moving Text Banner -->
+            <div class="moving-text-container">
+                <div class="moving-text">
+                    <i class="fas"></i> Every pedal stroke is a step closer to strength, freedom, and discovery.
+                    <i class="fas"></i> On a bike, the road becomes a teacher, the wind a companion, and the journey the reward.
+                </div>
+            </div>
+        </div>
+
+        <!-- New Features Section: Adventures, History, Achievements -->
+        <div class="features-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Journey</h2>
+                    <p>Discover what makes Pedal Legacy more than just a bicycle shop</p>
+                </div>
+
+                <div class="features-container">
+                    <div class="feature-card">
+                        <div class="feature-info">
+                            <h3>Adventures</h3>
+                            <a href="#" class="btn view-story" data-story="adventures">Explore Adventures</a>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-info">
+                            <h3>History</h3>
+                            <a href="#" class="btn view-story" data-story="history">Our Story</a>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-info">
+                            <h3>Achievements</h3>
+                            <a href="#" class="btn view-story" data-story="achievements">Our Achievements</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Road Bikes Section -->
+    <section id="road-bikes" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Road Bikes</h2>
+                <p>Engineered for speed and performance on paved surfaces</p>
+            </div>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.pinimg.com/1200x/a9/b9/22/a9b922c33cdf92e6a25f1c55542316a3.jpg" alt="Road Bike 1">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">AeroSpeed Pro</h3>
+                        <p class="product-price">₱64,499.00</p>
+                        <a href="#" class="btn view-details" data-product="aerospeed-pro">View Details</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.pinimg.com/1200x/4f/6a/ce/4f6aced4d533ffdaae929706de2411c7.jpg" alt="Road Bike 2">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Endurance Racer</h3>
+                        <p class="product-price">₱80,000.00</p>
+                        <a href="#" class="btn view-details" data-product="endurance-racer">View Details</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.pinimg.com/1200x/ea/76/2f/ea762f73369cdc30fa48a4b0cb83ecf9.jpg" alt="Road Bike 3">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Carbon Lightweight</h3>
+                        <p class="product-price">₱51,971.00</p>
+                        <a href="#" class="btn view-details" data-product="carbon-lightweight">View Details</a>
+                    </div>
+                </div>
+                <!-- New Road Bikes -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.pinimg.com/736x/8f/b8/98/8fb898da0edd0e3d14b5e6ed7dca7c9f.jpg" alt="Road Bike 4">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Velocity Pro</h3>
+                        <p class="product-price">₱33,452.00</p>
+                        <a href="#" class="btn view-details" data-product="velocity-pro">View Details</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.pinimg.com/1200x/1d/21/40/1d214027b413459c8ee8484106284913.jpg" alt="Road Bike 5">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Urban Commuter</h3>
+                        <p class="product-price">₱28,000.00</p>
+                        <a href="#" class="btn view-details" data-product="urban-commuter">View Details</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.pinimg.com/1200x/90/38/de/9038de0ee20a2c642a7f9ab288034ca4.jpg" alt="Road Bike 6">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Pro Carbon Racer</h3>
+                        <p class="product-price">₱51,222.00</p>
+                        <a href="#" class="btn view-details" data-product="pro-carbon-racer">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gravel Bikes Section -->
+    <section id="gravel-bikes" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Gravel Bikes</h2>
+                <p>Versatile bikes designed for on and off-road adventures</p>
+            </div>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.pinimg.com/1200x/c4/94/43/c4944385ca84706f501f8fd33108d288.jpg" alt="Gravel Bike 1">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Adventure Seeker</h3>
+                        <p class="product-price">₱177,750.00</p>
+                        <a href="#" class="btn view-details" data-product="adventure-seeker">View Details</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.pinimg.com/1200x/0c/9d/b0/0c9db0c51de039afbfd4602bf55a7ecc.jpg" alt="Gravel Bike 2">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Trail Explorer</h3>
+                        <p class="product-price">₱126,000.99</p>
+                        <a href="#" class="btn view-details" data-product="trail-explorer">View Details</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.pinimg.com/1200x/49/26/15/492615709d2d47f019181c5e23370c87.jpg" alt="Gravel Bike 3">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">All-Terrain Pro</h3>
+                        <p class="product-price">₱139,000.99</p>
+                        <a href="#" class="btn view-details" data-product="all-terrain-pro">View Details</a>
+                    </div>
+                </div>
+                <!-- New Gravel Bikes -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.pinimg.com/736x/b2/d4/a7/b2d4a7de8551b533332b97eea6401e3b.jpg" alt="Gravel Bike 4">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Explorer X1</h3>
+                        <p class="product-price">₱75,000.99</p>
+                        <a href="#" class="btn view-details" data-product="explorer-x1">View Details</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.pinimg.com/736x/06/b8/e8/06b8e822bb4dbaa09d7db163d0cc7c0d.jpg" alt="Gravel Bike 5">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Trail Master</h3>
+                        <p class="product-price">₱62,540.00</p>
+                        <a href="#" class="btn view-details" data-product="trail-master">View Details</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.pinimg.com/1200x/e1/19/92/e11992477bf6ad70885b5f8fe6d60d3d.jpg" alt="Gravel Bike 6">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Adventure X Pro</h3>
+                        <p class="product-price">₱47,000.00</p>
+                        <a href="#" class="btn view-details" data-product="adventure-x-pro">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mountain Bikes Section -->
+    <section id="mountain-bikes" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mountain Bikes</h2>
+                <p>Built to handle the toughest trails and terrain</p>
+            </div>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.pinimg.com/736x/23/60/6d/23606db7181e9e03ad3f7621836c11bd.jpg" alt="Mountain Bike 1">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Trail Blazer</h3>
+                        <p class="product-price">₱149,999.00</p>
+                        <a href="#" class="btn view-details" data-product="trail-blazer">View Details</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.pinimg.com/736x/52/1c/92/521c92de2c79b889071808aa1363fd75.jpg" alt="Mountain Bike 2">
+                    </div>                    <div class="product-info">
+                        <h3 class="product-title">Downhill Dominator</h3>
+                        <p class="product-price">₱125,000.00</p>
+                        <a href="#" class="btn view-details" data-product="downhill-dominator">View Details</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.pinimg.com/736x/ea/8d/b5/ea8db5721368daed2c7f317da20c5e41.jpg" alt="Mountain Bike 3">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Enduro Expert</h3>
+                        <p class="product-price">₱110,500.00</p>
+                        <a href="#" class="btn view-details" data-product="enduro-expert">View Details</a>
+                    </div>
+                </div>
+                <!-- New Mountain Bikes -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.pinimg.com/1200x/1e/21/82/1e2182d25d26fb2597abde1a4a8ad86a.jpg" alt="Mountain Bike 4">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Trail Dominator</h3>
+                        <p class="product-price">₱98,750.00</p>
+                        <a href="#" class="btn view-details" data-product="trail-dominator">View Details</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.pinimg.com/736x/ef/78/c4/ef78c4eb94304c1aa786e643ec49c25e.jpg" alt="Mountain Bike 5">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">All-Mountain Pro</h3>
+                        <p class="product-price">₱89,000.00</p>
+                        <a href="#" class="btn view-details" data-product="all-mountain-pro">View Details</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.pinimg.com/736x/0b/1b/05/0b1b05487a68371678d4ec4ea87f1327.jpg" alt="Mountain Bike 6">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">XC Racer Elite</h3>
+                        <p class="product-price">₱135,000.00</p>
+                        <a href="#" class="btn view-details" data-product="xc-racer-elite">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parts & Accessories Section -->
+    <section id="parts-accessories" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Parts & Accessories</h2>
+                <p>Upgrade and maintain your bike with our premium components</p>
+            </div>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.pinimg.com/1200x/e7/29/d5/e729d5a7a5629b5e9aadf34ce1481e24.jpg" alt="Bike Helmet">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Premium Saddle</h3>
+                        <p class="product-price">₱18,500.00</p>
+                        <a href="#" class="btn view-details" data-product="premium-saddle">View Details</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.pinimg.com/1200x/61/80/7d/61807d62c2fc3c1787056b7d58f82225.jpg" alt="Bike Pedals">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Carbon Frame</h3>
+                        <p class="product-price">₱45,000.00</p>
+                        <a href="#" class="btn view-details" data-product="carbon-frame">View Details</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.pinimg.com/736x/cb/86/82/cb8682ddd782ca3511bf04acc511301e.jpg" alt="Bike Computer">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Performance Wheels</h3>
+                        <p class="product-price">₱32,500.00</p>
+                        <a href="#" class="btn view-details" data-product="performance-wheels">View Details</a>
+                    </div>
+                </div>
+                <!-- New Parts & Accessories -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://brink.uk/cdn/shop/files/Fox-38-Factory-29-Grip-X2-Fork-2025-BRINK-2.jpg?v=1739358382&width=1946" alt="Bike Computer">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">CYKL Cockpit</h3>
+                        <p class="product-price">₱28,095.00</p>
+                        <a href="#" class="btn view-details" data-product="carbon-handlebars">View Details</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/21zJPpEs8-L._SX600_.jpg" alt="Bike Helmet">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">MTB Air Suspension Fork </h3>
+                        <p class="product-price">₱22,499.00</p>
+                        <a href="#" class="btn view-details" data-product="pro-cycling-shoes">View Details</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://contents.mediadecathlon.com/p2392082/sq/k$40b6a599e92456e3b6dc38dc94f258fa/mountain-bike-helmet-expl-50-black-rockrider-8530112.jpg?f=700x700&format=auto" alt="Bike Pedals">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Mountain Bike Helmet</h3>
+                        <p class="product-price">₱8,790.00</p>
+                        <a href="#" class="btn view-details" data-product="aero-helmet">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clothing Section -->
+    <section id="clothing" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Cycling Clothing</h2>
+                <p>High-performance apparel for comfort and efficiency</p>
+            </div>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.pinimg.com/1200x/98/ee/f6/98eef6a4b6ca1aa72f80afa7672bb152.jpg" alt="Cycling Jersey & Bib Shorts">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Lecol Cycling Jersey & Bib Shorts</h3>
+                        <p class="product-price">₱12,499.00</p>
+                        <a href="#" class="btn view-details" data-product="lecol-jersey-shorts">View Details</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.pinimg.com/1200x/0f/57/44/0f57440f1c2418a878f06e594a762a73.jpg" alt="Bib Shorts">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Castel Cycling Jersey & Bib Shorts</h3>
+                        <p class="product-price">₱15,799.00</p>
+                        <a href="#" class="btn view-details" data-product="castel-jersey-shorts">View Details</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.pinimg.com/1200x/55/41/06/554106dec82065bded6faec09f3ac17f.jpg" alt="Cycling Jacket">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Cheji Jersey & Bib Shorts</h3>
+                        <p class="product-price">₱9,890.00</p>
+                        <a href="#" class="btn view-details" data-product="cheji-jersey-shorts">View Details</a>
+                    </div>
+                </div>
+                <!-- New Clothing -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.pinimg.com/736x/3a/d9/7c/3ad97cc83ee766ad4106f5d6a20a217d.jpg" alt="MILOTO Women Cycling">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">MILOTO Women Cycling</h3>
+                        <p class="product-price">₱8,599.00</p>
+                        <a href="#" class="btn view-details" data-product="miloto-women-cycling">View Details</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.pinimg.com/736x/99/d6/e5/99d6e5bac80ff84e446e98329fb9b759.jpg" alt="MTB Cycling">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">MTB Cycling</h3>
+                        <p class="product-price">₱7,999.00</p>
+                        <a href="#" class="btn view-details" data-product="mtb-cycling">View Details</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.pinimg.com/736x/60/5c/6b/605c6b7c8a912c0a41ba6c3dd0851312.jpg" alt="Baleaf Women Short Sleeve & Padded Shorts">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Baleaf Women Short Sleeve</h3>
+                        <p class="product-price">₱5,900.00</p>
+                        <a href="#" class="btn view-details" data-product="baleaf-women-short-sleeve">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section id="profile" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Your Profile</h2>
+                <p>Manage your personal information and preferences</p>
+            </div>
+
+            <div class="profile-container">
+                <div class="profile-header">
+                    <div class="profile-avatar" id="profile-avatar">
+                        <i class="fas fa-user" id="profile-icon"></i>
+                        <div class="profile-avatar-upload">
+                            <i class="fas fa-camera"></i> Change Photo
+                        </div>
+                        <button class="profile-avatar-remove" id="remove-photo">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <h3 style="color: white;">Your Profile Information</h3>
+                </div>
+
+                <div class="profile-info">
+                    <div class="profile-field">
+                        <span class="profile-label">Full Name</span>
+                        <div class="profile-value profile-empty">Not provided</div>
+                    </div>
+
+                    <div class="profile-field">
+                        <span class="profile-label">Address</span>
+                        <div class="profile-value profile-empty">Not provided</div>
+                    </div>
+
+                    <div class="profile-field">
+                        <span class="profile-label">Age</span>
+                        <div class="profile-value profile-empty">Not provided</div>
+                    </div>
+
+                    <div class="profile-field">
+                        <span class="profile-label">ZIP Code</span>
+                        <div class="profile-value profile-empty">Not provided</div>
+                    </div>
+
+                    <div class="profile-field">
+                        <span class="profile-label">Country</span>
+                        <div class="profile-value profile-empty">Not provided</div>
+                    </div>
+
+                    <div class="profile-field">
+                        <span class="profile-label">Phone Number</span>
+                        <div class="profile-value profile-empty">Not provided</div>
+                    </div>
+
+                    <div class="profile-field">
+                        <span class="profile-label">Email Address</span>
+                        <div class="profile-value profile-empty">Not provided</div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="btn" id="edit-profile">Edit Profile</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2021 @ Pedal Legacy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Product Detail Modal -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modal-img" src="" alt="Product Image">
+                </div>
+                <div class="modal-details">
+                    <h3 id="modal-title"></h3>
+                    <div class="modal-description" id="modal-description"></div>
+                    <ul class="specs-list" id="modal-specs"></ul>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn decrease">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" max="10">
+                            <button class="quantity-btn increase">+</button>
+                        </div>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="btn add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Cart Modal -->
+    <div id="cart-modal" class="modal cart-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="cart-header">
+                <h2>Your Shopping Cart</h2>
+                <span id="cart-item-count">0 items</span>
+            </div>
+
+            <div class="cart-items" id="cart-items">
+                <!-- Cart is now empty -->
+                <p style="text-align: center; padding: 40px; color: #ccc;">Your cart is empty</p>
+            </div>
+            <div class="cart-summary">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cart-total">₱0.00</span>
+                </div>
+                <div class="cart-actions">
+                    <button class="btn" id="checkout-btn">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="modal checkout-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Checkout</h2>
+            <div class="checkout-summary">
+                <h3>Order Summary</h3>
+                <div id="checkout-items">
+                    <!-- Checkout items will be populated here -->
+                </div>
+                <div class="checkout-total">
+                    <span>Total:</span>
+                    <span id="checkout-total">₱0.00</span>
+                </div>
+            </div>
+            <div class="customer-form">
+                <h3>Customer Information</h3>
+                <form id="customer-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="first-name">First Name</label>
+                            <input type="text" class="form-input" id="first-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="last-name">Last Name</label>
+                            <input type="text" class="form-input" id="last-name" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" class="form-input" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="phone">Phone</label>
+                        <input type="tel" class="form-input" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="address">Address</label>
+                        <input type="text" class="form-input" id="address" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="city">City</label>
+                            <input type="text" class="form-input" id="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="zip">ZIP Code</label>
+                            <input type="text" class="form-input" id="zip" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="country">Country</label>
+                        <input type="text" class="form-input" id="country" required>
+                    </div>
+
+                    <!-- Payment Methods Section with fixed logos -->
+                    <div class="payment-methods">
+                        <h3>Payment Method</h3>
+                        <div class="payment-options">
+                            <div class="payment-option" data-method="credit-card">
+                                <div class="payment-icon">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
+                                </div>
+                                <div>Credit Card</div>
+                            </div>
+                            <div class="payment-option" data-method="gcash">
+                                <div class="payment-icon">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSU3hFvvnNeFYhsNG6n4Yz6BU4_xWbFM1dbA&s" alt="GCash">
+                                </div>
+                                <div>GCash</div>
+                            </div>
+                            <div class="payment-option" data-method="paypal">
+                                <div class="payment-icon">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+                                </div>
+                                <div>PayPal</div>
+                            </div>
+                            <div class="payment-option" data-method="bank-transfer">
+                                <div class="payment-icon">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1200px-Mastercard-logo.svg.png" alt="Bank Transfer">
+                                </div>
+                                <div>Bank Transfer</div>
+                            </div>
+                        </div>
+
+                        <!-- Payment Details Section -->
+                        <div class="payment-details-section" id="payment-details">
+                            <h4>Payment Details</h4>
+                            <div class="payment-info" id="credit-card-info">
+                                <p><strong>Credit Card Payment</strong></p>
+                                <p>We accept Visa, MasterCard, and American Express.</p>
+                                <p>Your payment will be processed securely through our payment gateway.</p>
+                                <p>Please have your card details ready on the next screen.</p>
+                            </div>
+                            <div class="payment-info" id="gcash-info">
+                                <p><strong>GCash Payment</strong></p>
+                                <p>Send payment to GCash number: <strong>0917 123 4567</strong></p>
+                                <p>Account Name: <strong>Pedal Legacy Inc.</strong></p>
+                                <p>Please include your order number in the reference field.</p>
+                                <p>Payment confirmation may take up to 24 hours.</p>
+                            </div>
+                            <div class="payment-info" id="paypal-info">
+                                <p><strong>PayPal Payment</strong></p>
+                                <p>Send payment to PayPal account: <strong>paypal.me/pedallegacy</strong></p>
+                                <p>Account Name: <strong>Pedal Legacy Inc.</strong></p>
+                                <p>Please include your order number in the payment note.</p>
+                                <p>International payments are accepted.</p>
+                            </div>
+                            <div class="payment-info" id="bank-transfer-info">
+                                <p><strong>Bank Transfer</strong></p>
+                                <p>Bank: <strong>Bank of the Philippine Islands (BPI)</strong></p>
+                                <p>Account Number: <strong>1234-5678-90</strong></p>
+                                <p>Account Name: <strong>Pedal Legacy Inc.</strong></p>
+                                <p>Please email the deposit slip to payments@pedallegacy.com</p>
+                                <p>Processing may take 1-2 business days.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn" id="place-order">Place Order</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Confirmation Modal -->
+    <div id="order-confirmation-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <div class="modal-details" style="text-align: center;">
+                    <h2>Thank You For Your Order!</h2>
+                    <p>Your order has been placed successfully. You will receive a confirmation email shortly.</p>
+                    <p>Order ID: <span id="order-id"></span></p>
+                    <button class="btn" id="continue-shopping-confirm">Continue Shopping</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Story Detail Modal -->
+    <div id="story-modal" class="modal story-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="story-img" src="" alt="Story Image">
+                </div>
+                <div class="modal-details">
+                    <h3 id="story-title"></h3>
+                    <div class="modal-description" id="story-description"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Edit Modal -->
+    <div id="profile-edit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Edit Profile</h2>
+            <div class="customer-form">
+                <form id="profile-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="profile-first-name">First Name</label>
+                            <input type="text" class="form-input" id="profile-first-name">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="profile-last-name">Last Name</label>
+                            <input type="text" class="form-input" id="profile-last-name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="profile-address">Address</label>
+                        <input type="text" class="form-input" id="profile-address">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="profile-age">Age</label>
+                            <input type="number" class="form-input" id="profile-age" min="1" max="120">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="profile-zip">ZIP Code</label>
+                            <input type="text" class="form-input" id="profile-zip">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="profile-country">Country</label>
+                        <input type="text" class="form-input" id="profile-country">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="profile-phone">Phone Number</label>
+                        <input type="tel" class="form-input" id="profile-phone">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="profile-email">Email Address</label>
+                        <input type="email" class="form-input" id="profile-email">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn" id="save-profile">Save Profile</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Background images for cycling theme
+        const backgroundImages = [
+            'https://i.pinimg.com/1200x/3e/93/b3/3e93b3326b403839b8f53d75cedd4f91.jpg',
+            'https://i.pinimg.com/1200x/7d/c6/d3/7dc6d343586f20be76e90995268858fc.jpg',
+            'https://i.pinimg.com/1200x/47/ed/dd/47eddd2591436049e84fa0d6f4b9e853.jpg',
+            'https://i.pinimg.com/1200x/ef/00/24/ef00247d277fc79e9eae3428c57a3db4.jpg',
+            'https://i.pinimg.com/1200x/6a/b7/06/6ab706bad26a5b78e8f98ef2b28b00eb.jpg'
+        ];
+
+        // Product data - Updated with multiple images for each product
+        const products = {
+            'aerospeed-pro': {
+                title: 'AeroSpeed Pro Road Bike',
+                images: [
+                    'https://i.pinimg.com/1200x/a9/b9/22/a9b922c33cdf92e6a25f1c55542316a3.jpg'
+                ],
+                price: 64499.00,
+                description: 'The AeroSpeed Pro is engineered for maximum speed and efficiency. With its wind-tunnel tested carbon frame and integrated components, this bike slices through the air with minimal resistance.',
+                specs: [
+                    {name: 'Frame', value: 'OCLV Carbon, Aero Design'},
+                    {name: 'Groupset', value: 'Shimano 105 Di2 12-speed'},
+                    {name: 'Wheels', value: 'Aero Carbon 50mm'},
+                    {name: 'Weight', value: '7.8 kg (17.2 lbs)'},
+                    {name: 'Best For', value: 'Aero Racing, Sprinting'}
+                ],
+                category: 'bike'
+            },
+            'endurance-racer': {
+                title: 'Endurance Racer Road Bike',
+                images: [
+                    'https://i.pinimg.com/1200x/4f/6a/ce/4f6aced4d533ffdaae929706de2411c7.jpg'
+                ],
+                price: 80000.00,
+                description: 'Designed for long-distance comfort without sacrificing performance. The Endurance Racer features a slightly more relaxed geometry for all-day riding comfort.',
+                specs: [
+                    {name: 'Frame', value: 'Carbon Fiber, Endurance Geometry'},
+                    {name: 'Groupset', value: 'SRAM Rival eTap AXS Wireless'},
+                    {name: 'Wheels', value: 'Alloy Carbon Hybrid'},
+                    {name: 'Weight', value: '8.3 kg (18.3 lbs)'},
+                    {name: 'Best For', value: 'Long Distance, Endurance Riding'}
+                ],
+                category: 'bike'
+            },
+            'carbon-lightweight': {
+                title: 'Carbon Lightweight Road Bike',
+                images: [
+                    'https://i.pinimg.com/1200x/ea/76/2f/ea762f73369cdc30fa48a4b0cb83ecf9.jpg'
+                ],
+                price: 51971.00,
+                description: 'Meticulously crafted with high-modulus carbon fiber and premium components for unparalleled climbing performance and responsive handling.',
+                specs: [
+                    {name: 'Frame', value: 'High-Modulus Carbon Fiber'},
+                    {name: 'Groupset', value: 'Shimano Ultegra Di2 12-speed'},
+                    {name: 'Wheels', value: 'Ultralight Carbon 38mm'},
+                    {name: 'Weight', value: '6.9 kg (15.2 lbs)'},
+                    {name: 'Best For', value: 'Climbing, Lightweight Racing'}
+                ],
+                category: 'bike'
+            },
+            // New Road Bikes
+            'velocity-pro': {
+                title: 'Velocity Pro Road Bike',
+                images: [
+                    'https://i.pinimg.com/736x/8f/b8/98/8fb898da0edd0e3d14b5e6ed7dca7c9f.jpg'
+                ],
+                price: 33452.00,
+                description: 'The Velocity Pro combines aerodynamics with comfort for the ultimate road cycling experience. Perfect for long rides and competitive racing.',
+                specs: [
+                    {name: 'Frame', value: 'Advanced Carbon Composite'},
+                    {name: 'Groupset', value: 'Shimano Ultegra Di2'},
+                    {name: 'Wheels', value: 'Deep Section Carbon'},
+                    {name: 'Weight', value: '7.5 kg (16.5 lbs)'},
+                    {name: 'Best For', value: 'All-Round Performance'}
+                ],
+                category: 'bike'
+            },
+            'urban-commuter': {
+                title: 'Urban Commuter Road Bike',
+                images: [
+                    'https://i.pinimg.com/1200x/1d/21/40/1d214027b413459c8ee8484106284913.jpg'
+                ],
+                price: 28000.00,
+                description: 'Designed for city commuting with comfort and reliability. Features practical accessories and a comfortable riding position.',
+                specs: [
+                    {name: 'Frame', value: 'Aluminum Alloy'},
+                    {name: 'Groupset', value: 'Shimano Tiagra'},
+                    {name: 'Wheels', value: 'Alloy with Puncture Protection'},
+                    {name: 'Weight', value: '9.2 kg (20.3 lbs)'},
+                    {name: 'Best For', value: 'Urban Commuting'}
+                ],
+                category: 'bike'
+            },
+            'pro-carbon-racer': {
+                title: 'Pro Carbon Racer',
+                images: [
+                    'https://i.pinimg.com/1200x/90/38/de/9038de0ee20a2c642a7f9ab288034ca4.jpg'
+                ],
+                price: 51222.00,
+                description: 'Professional-grade carbon racing bike with the latest components and technology for competitive cyclists.',
+                specs: [
+                    {name: 'Frame', value: 'High-Modulus Carbon'},
+                    {name: 'Groupset', value: 'Shimano Dura-Ace Di2'},
+                    {name: 'Wheels', value: 'Carbon Tubular'},
+                    {name: 'Weight', value: '6.7 kg (14.8 lbs)'},
+                    {name: 'Best For', value: 'Professional Racing'}
+                ],
+                category: 'bike'
+            },
+            'adventure-seeker': {
+                title: 'Adventure Seeker Gravel Bike',
+                images: [
+                    'https://i.pinimg.com/1200x/c4/94/43/c4944385ca84706f501f8fd33108d288.jpg'
+                ],
+                price: 177750.00,
+                description: 'The ultimate bike for exploration. With clearance for wide tires, multiple mounting points, and a stable yet responsive geometry, the Adventure Seeker is ready for any path you choose.',
+                specs: [
+                    {name: 'Frame', value: 'Aluminum Alloy, Adventure Geometry'},
+                    {name: 'Groupset', value: 'Shimano GRX 600 11-speed'},
+                    {name: 'Tire Clearance', value: 'Up to 45mm'},
+                    {name: 'Weight', value: '9.8 kg (21.6 lbs)'},
+                    {name: 'Best For', value: 'Gravel Exploration, Bikepacking'}
+                ],
+                category: 'bike'
+            },
+            'trail-explorer': {
+                title: 'Trail Explorer Gravel Bike',
+                images: [
+                    'https://i.pinimg.com/1200x/0c/9d/b0/0c9db0c51de039afbfd4602bf55a7ecc.jpg'
+                ],
+                price: 126000.99,
+                description: 'Built for tackling challenging terrain with confidence. The Trail Explorer features a durable frame, wide gear range, and stable handling for technical trails.',
+                specs: [
+                    {name: 'Frame', value: 'Carbon Gravel Frame'},
+                    {name: 'Groupset', value: 'SRAM Rival XPLR eTap AXS'},
+                    {name: 'Tire Clearance', value: 'Up to 50mm'},
+                    {name: 'Weight', value: '9.2 kg (20.3 lbs)'},
+                    {name: 'Best For', value: 'Technical Gravel, Mixed Terrain'}
+                ],
+                category: 'bike'
+            },
+            'all-terrain-pro': {
+                title: 'All-Terrain Pro Gravel Bike',
+                images: [
+                    'https://i.pinimg.com/1200x/49/26/15/492615709d2d47f019181c5e23370c87.jpg'
+                ],
+                price: 139000.99,
+                description: 'The ultimate all-terrain machine. With its advanced suspension system and versatile geometry, the All-Terrain Pro handles everything from smooth pavement to rugged singletrack.',
+                specs: [
+                    {name: 'Frame', value: 'Advanced Carbon Composite'},
+                    {name: 'Groupset', value: 'Shimano GRX 800 Di2'},
+                    {name: 'Tire Clearance', value: 'Up to 53mm'},
+                    {name: 'Weight', value: '8.7 kg (19.2 lbs)'},
+                    {name: 'Best For', value: 'All-Terrain Performance'}
+                ],
+                category: 'bike'
+            },
+            'explorer-x1': {
+                title: 'Explorer X1 Gravel Bike',
+                images: [
+                    'https://i.pinimg.com/736x/b2/d4/a7/b2d4a7de8551b533332b97eea6401e3b.jpg'
+                ],
+                price: 75000.99,
+                description: 'Designed for long-distance exploration with comfort and reliability. Features multiple mounting points for bikepacking gear.',
+                specs: [
+                    {name: 'Frame', value: 'Steel Alloy, Adventure Geometry'},
+                    {name: 'Groupset', value: 'Shimano GRX 600'},
+                    {name: 'Tire Clearance', value: 'Up to 50mm'},
+                    {name: 'Weight', value: '10.5 kg (23.1 lbs)'},
+                    {name: 'Best For', value: 'Bikepacking, Long Tours'}
+                ],
+                category: 'bike'
+            },
+            'trail-master': {
+                title: 'Trail Master Gravel Bike',
+                images: [
+                    'https://i.pinimg.com/736x/06/b8/e8/06b8e822bb4dbaa09d7db163d0cc7c0d.jpg'
+                ],
+                price: 62540.00,
+                description: 'A versatile gravel bike that excels on mixed terrain. The Trail Master offers a perfect balance of speed, comfort, and capability.',
+                specs: [
+                    {name: 'Frame', value: 'Aluminum Alloy'},
+                    {name: 'Groupset', value: 'SRAM Apex XPLR'},
+                    {name: 'Tire Clearance', value: 'Up to 45mm'},
+                    {name: 'Weight', value: '9.9 kg (21.8 lbs)'},
+                    {name: 'Best For', value: 'Mixed Terrain, Gravel Racing'}
+                ],
+                category: 'bike'
+            },
+            'adventure-x-pro': {
+                title: 'Adventure X Pro Gravel Bike',
+                images: [
+                    'https://i.pinimg.com/1200x/e1/19/92/e11992477bf6ad70885b5f8fe6d60d3d.jpg'
+                ],
+                price: 47000.00,
+                description: 'Premium gravel bike with top-tier components for the serious adventurer. Built to handle the most challenging routes with confidence.',
+                specs: [
+                    {name: 'Frame', value: 'High-Modulus Carbon'},
+                    {name: 'Groupset', value: 'SRAM Force XPLR eTap AXS'},
+                    {name: 'Tire Clearance', value: 'Up to 53mm'},
+                    {name: 'Weight', value: '8.4 kg (18.5 lbs)'},
+                    {name: 'Best For', value: 'Premium Gravel, Adventure Racing'}
+                ],
+                category: 'bike'
+            },
+            'trail-blazer': {
+                title: 'Trail Blazer Mountain Bike',
+                images: [
+                    'https://i.pinimg.com/736x/23/60/6d/23606db7181e9e03ad3f7621836c11bd.jpg'
+                ],
+                price: 149999.00,
+                description: 'The perfect entry into mountain biking. The Trail Blazer offers capable performance on a variety of trails with its balanced geometry and reliable components.',
+                specs: [
+                    {name: 'Frame', value: 'Aluminum Alloy, Trail Geometry'},
+                    {name: 'Suspension', value: '120mm Front, 120mm Rear'},
+                    {name: 'Groupset', value: 'Shimano Deore 12-speed'},
+                    {name: 'Weight', value: '13.5 kg (29.8 lbs)'},
+                    {name: 'Best For', value: 'Trail Riding, Beginner to Intermediate'}
+                ],
+                category: 'bike'
+            },
+            'downhill-dominator': {
+                title: 'Downhill Dominator Mountain Bike',
+                images: [
+                    'https://i.pinimg.com/736x/52/1c/92/521c92de2c79b889071808aa1363fd75.jpg'
+                ],
+                price: 125000.00,
+                description: 'Built for speed and control on the steepest descents. The Downhill Dominator features long-travel suspension, aggressive geometry, and burly components to handle the most demanding terrain.',
+                specs: [
+                    {name: 'Frame', value: 'Carbon Fiber, DH Geometry'},
+                    {name: 'Suspension', value: '200mm Front, 200mm Rear'},
+                    {name: 'Groupset', value: 'SRAM GX DH 7-speed'},
+                    {name: 'Weight', value: '15.8 kg (34.8 lbs)'},
+                    {name: 'Best For', value: 'Downhill Racing, Bike Parks'}
+                ],
+                category: 'bike'
+            },
+            'enduro-expert': {
+                title: 'Enduro Expert Mountain Bike',
+                images: [
+                    'https://i.pinimg.com/736x/ea/8d/b5/ea8db5721368daed2c7f317da20c5e41.jpg'
+                ],
+                price: 110500.00,
+                description: 'The ultimate all-mountain machine. The Enduro Expert climbs efficiently and descends with confidence, making it the perfect choice for long days on challenging trails.',
+                specs: [
+                    {name: 'Frame', value: 'Carbon Fiber, Enduro Geometry'},
+                    {name: 'Suspension', value: '160mm Front, 150mm Rear'},
+                    {name: 'Groupset', value: 'Shimano XT 12-speed'},
+                    {name: 'Weight', value: '13.2 kg (29.1 lbs)'},
+                    {name: 'Best For', value: 'Enduro Racing, All-Mountain'}
+                ],
+                category: 'bike'
+            },
+            'trail-dominator': {
+                title: 'Trail Dominator Mountain Bike',
+                images: [
+                    'https://i.pinimg.com/1200x/1e/21/82/1e2182d25d26fb2597abde1a4a8ad86a.jpg'
+                ],
+                price: 98750.00,
+                description: 'A versatile trail bike that excels on technical terrain. The Trail Dominator offers precise handling and capable suspension for confident riding.',
+                specs: [
+                    {name: 'Frame', value: 'Aluminum Alloy'},
+                    {name: 'Suspension', value: '140mm Front, 130mm Rear'},
+                    {name: 'Groupset', value: 'SRAM NX Eagle 12-speed'},
+                    {name: 'Weight', value: '13.8 kg (30.4 lbs)'},
+                    {name: 'Best For', value: 'Technical Trail Riding'}
+                ],
+                category: 'bike'
+            },
+            'all-mountain-pro': {
+                title: 'All-Mountain Pro Mountain Bike',
+                images: [
+                    'https://i.pinimg.com/736x/ef/78/c4/ef78c4eb94304c1aa786e643ec49c25e.jpg'
+                ],
+                price: 89000.00,
+                description: 'Professional-grade all-mountain bike with premium components. The All-Mountain Pro handles everything from technical climbs to aggressive descents.',
+                specs: [
+                    {name: 'Frame', value: 'Carbon Fiber'},
+                    {name: 'Suspension', value: '150mm Front, 140mm Rear'},
+                    {name: 'Groupset', value: 'Shimano XTR 12-speed'},
+                    {name: 'Weight', value: '12.5 kg (27.6 lbs)'},
+                    {name: 'Best For', value: 'All-Mountain, Technical Trails'}
+                ],
+                category: 'bike'
+            },
+            'xc-racer-elite': {
+                title: 'XC Racer Elite Mountain Bike',
+                images: [
+                    'https://i.pinimg.com/736x/0b/1b/05/0b1b05487a68371678d4ec4ea87f1327.jpg'
+                ],
+                price: 135000.00,
+                description: 'Lightweight cross-country race bike designed for speed and efficiency. The XC Racer Elite climbs like a rocket and flies on flowy trails.',
+                specs: [
+                    {name: 'Frame', value: 'Ultralight Carbon'},
+                    {name: 'Suspension', value: '100mm Front, 100mm Rear'},
+                    {name: 'Groupset', value: 'SRAM XX1 Eagle AXS'},
+                    {name: 'Weight', value: '10.2 kg (22.5 lbs)'},
+                    {name: 'Best For', value: 'XC Racing, Fast Trails'}
+                ],
+                category: 'bike'
+            },
+            'premium-saddle': {
+                title: 'Premium Performance Saddle',
+                images: [
+                    'https://i.pinimg.com/1200x/e7/29/d5/e729d5a7a5629b5e9aadf34ce1481e24.jpg'
+                ],
+                price: 18500.00,
+                description: 'Engineered for maximum comfort and performance. This premium saddle features advanced padding technology and ergonomic design for long-distance riding.',
+                specs: [
+                    {name: 'Material', value: 'Carbon Fiber Base'},
+                    {name: 'Cover', value: 'Microfiber with Gel Padding'},
+                    {name: 'Rails', value: 'Titanium'},
+                    {name: 'Weight', value: '185g'},
+                    {name: 'Best For', value: 'Road & Gravel Cycling'}
+                ],
+                category: 'accessory'
+            },
+            'carbon-frame': {
+                title: 'Carbon Frame Upgrade',
+                images: [
+                    'https://i.pinimg.com/1200x/61/80/7d/61807d62c2fc3c1787056b7d58f82225.jpg'
+                ],
+                price: 45000.00,
+                description: 'High-modulus carbon frame with optimized tube shapes for stiffness, comfort, and aerodynamics. Compatible with most modern components.',
+                specs: [
+                    {name: 'Material', value: 'High-Modulus Carbon Fiber'},
+                    {name: 'Weight', value: '850g (Size 54)'},
+                    {name: 'Compatibility', value: 'Electronic & Mechanical Groupsets'},
+                    {name: 'Color Options', value: 'Matte Black, Gloss Red, Stealth'},
+                    {name: 'Best For', value: 'Road Bike Upgrades'}
+                ],
+                category: 'accessory'
+            },
+            'performance-wheels': {
+                title: 'Performance Carbon Wheels',
+                images: [
+                    'https://i.pinimg.com/736x/cb/86/82/cb8682ddd782ca3511bf04acc511301e.jpg'
+                ],
+                price: 32500.00,
+                description: 'Lightweight carbon wheelset with aerodynamic profile. Features tubeless compatibility and durable braking surface for all-weather performance.',
+                specs: [
+                    {name: 'Material', value: 'Full Carbon'},
+                    {name: 'Rim Depth', value: '50mm'},
+                    {name: 'Weight', value: '1450g (set)'},
+                    {name: 'Compatibility', value: 'Tubeless Ready'},
+                    {name: 'Best For', value: 'Road & Gravel Performance'}
+                ],
+                category: 'accessory'
+            },
+            'carbon-handlebars': {
+                title: 'Carbon Handlebars',
+                images: [
+                    'https://brink.uk/cdn/shop/files/Fox-38-Factory-29-Grip-X2-Fork-2025-BRINK-2.jpg?v=1739358382&width=1946'
+                ],
+                price: 28095.00,
+                description: 'Ultralight carbon handlebars with ergonomic shape for comfortable hand positioning and improved control.',
+                specs: [
+                    {name: 'Material', value: 'Carbon Fiber'},
+                    {name: 'Width', value: '420mm'},
+                    {name: 'Weight', value: '185g'},
+                    {name: 'Drop', value: '125mm'},
+                    {name: 'Best For', value: 'Road & Gravel Bikes'}
+                ],
+                category: 'accessory'
+            },
+            'pro-cycling-shoes': {
+                title: 'MTB Air Suspension Fork',
+                images: [
+                    'https://images-na.ssl-images-amazon.com/images/I/21zJPpEs8-L._SX600_.jpg'
+                ],
+                price: 22499.00,
+                description: 'High-performance mountain bike suspension fork with air spring technology for smooth and responsive trail performance.',
+                specs: [
+                    {name: 'Material', value: 'Aluminum Alloy'},
+                    {name: 'Travel', value: '120-160mm Adjustable'},
+                    {name: 'Weight', value: '1850g'},
+                    {name: 'Compatibility', value: '27.5" & 29" Wheels'},
+                    {name: 'Best For', value: 'Mountain Biking'}
+                ],
+                category: 'accessory'
+            },
+            'aero-helmet': {
+                title: 'Mountain Bike Helmet',
+                images: [
+                    'https://contents.mediadecathlon.com/p2392082/sq/k$40b6a599e92456e3b6dc38dc94f258fa/mountain-bike-helmet-expl-50-black-rockrider-8530112.jpg?f=700x700&format=auto'
+                ],
+                price: 8790.00,
+                description: 'Durable mountain bike helmet with extended coverage and MIPS technology for enhanced safety on technical trails.',
+                specs: [
+                    {name: 'Material', value: 'Polycarbonate Shell'},
+                    {name: 'Safety', value: 'MIPS Technology'},
+                    {name: 'Vents', value: '18 Optimized Vents'},
+                    {name: 'Weight', value: '370g (size M)'},
+                    {name: 'Best For', value: 'Mountain Biking & Trail Riding'}
+                ],
+                category: 'accessory'
+            },
+            'lecol-jersey-shorts': {
+                title: 'Lecol Cycling Jersey & Bib Shorts',
+                images: [
+                    'https://i.pinimg.com/1200x/98/ee/f6/98eef6a4b6ca1aa72f80afa7672bb152.jpg'
+                ],
+                price: 12499.00,
+                description: 'Premium cycling kit from Lecol featuring advanced moisture-wicking fabric, ergonomic design, and comfortable chamois for long rides.',
+                specs: [
+                    {name: 'Material', value: 'Technical Polyester Blend'},
+                    {name: 'Features', value: 'Moisture-Wicking, UV Protection'},
+                    {name: 'Chamois', value: 'Gel-Enhanced Multi-Density'},
+                    {name: 'Fit', value: 'Race Cut'},
+                    {name: 'Best For', value: 'Road & Gravel Cycling'}
+                ],
+                category: 'clothing'
+            },
+            'castel-jersey-shorts': {
+                title: 'Castel Cycling Jersey & Bib Shorts',
+                images: [
+                    'https://i.pinimg.com/1200x/0f/57/44/0f57440f1c2418a878f06e594a762a73.jpg'
+                ],
+                price: 15799.00,
+                description: 'High-performance cycling apparel from Castel with aerodynamic fit, advanced compression, and premium Italian chamois.',
+                specs: [
+                    {name: 'Material', value: 'Aero Compression Fabric'},
+                    {name: 'Features', value: 'Seamless Shoulders, Silicone Gripper'},
+                    {name: 'Chamois', value: 'Pro Carbon Elite'},
+                    {name: 'Fit', value: 'Aero Race'},
+                    {name: 'Best For', value: 'Competitive Road Cycling'}
+                ],
+                category: 'clothing'
+            },
+            'cheji-jersey-shorts': {
+                title: 'Cheji Jersey & Bib Shorts',
+                images: [
+                    'https://i.pinimg.com/1200x/55/41/06/554106dec82065bded6faec09f3ac17f.jpg'
+                ],
+                price: 9890.00,
+                description: 'Comfort-focused cycling kit from Cheji with relaxed fit, breathable fabric, and comfortable chamois for all-day riding.',
+                specs: [
+                    {name: 'Material', value: 'Breathable Polyester'},
+                    {name: 'Features', value: 'Relaxed Fit, Multiple Pockets'},
+                    {name: 'Chamois', value: 'Comfort Plus Gel'},
+                    {name: 'Fit', value: 'Club Fit'},
+                    {name: 'Best For', value: 'Recreational & Long-Distance'}
+                ],
+                category: 'clothing'
+            },
+            // New Clothing Products
+            'miloto-women-cycling': {
+                title: 'MILOTO Women Cycling Jersey & Shorts',
+                images: [
+                    'https://i.pinimg.com/736x/3a/d9/7c/3ad97cc83ee766ad4106f5d6a20a217d.jpg'
+                ],
+                price: 8599.00,
+                description: 'Stylish and functional women\'s cycling kit from MILOTO with feminine design, comfortable fit, and performance fabrics for all-day riding comfort.',
+                specs: [
+                    {name: 'Material', value: 'Breathable Polyester-Spandex Blend'},
+                    {name: 'Features', value: 'Moisture-Wicking, UV Protection'},
+                    {name: 'Chamois', value: 'Women-Specific Comfort Gel'},
+                    {name: 'Fit', value: 'Women\'s Specific Cut'},
+                    {name: 'Best For', value: 'Women Cyclists, Recreational Riding'}
+                ],
+                category: 'clothing'
+            },
+            'mtb-cycling': {
+                title: 'MTB Cycling Jersey & Shorts',
+                images: [
+                    'https://i.pinimg.com/736x/99/d6/e5/99d6e5bac80ff84e446e98329fb9b759.jpg'
+                ],
+                price: 7999.00,
+                description: 'Durable mountain bike cycling kit designed for trail riding with reinforced fabric, relaxed fit, and comfortable padding for rough terrain.',
+                specs: [
+                    {name: 'Material', value: 'Reinforced Polyester Blend'},
+                    {name: 'Features', value: 'Reinforced Panels, Multiple Pockets'},
+                    {name: 'Chamois', value: 'MTB Specific Padding'},
+                    {name: 'Fit', value: 'Relaxed Trail Fit'},
+                    {name: 'Best For', value: 'Mountain Biking, Trail Riding'}
+                ],
+                category: 'clothing'
+            },
+            'baleaf-women-short-sleeve': {
+                title: 'Baleaf Women Short Sleeve & Padded Shorts',
+                images: [
+                    'https://i.pinimg.com/736x/60/5c/6b/605c6b7c8a912c0a41ba6c3dd0851312.jpg'
+                ],
+                price: 5900.00,
+                description: 'Comfortable women\'s cycling set from Baleaf with short sleeve jersey and padded shorts, perfect for casual riding and fitness cycling.',
+                specs: [
+                    {name: 'Material', value: 'Soft Polyester Blend'},
+                    {name: 'Features', value: 'Comfort Fit, Three Rear Pockets'},
+                    {name: 'Chamois', value: 'Basic Comfort Padding'},
+                    {name: 'Fit', value: 'Relaxed Comfort Fit'},
+                    {name: 'Best For', value: 'Casual Riding, Fitness Cycling'}
+                ],
+                category: 'clothing'
+            }
+        };
+
+        // Story data
+        const stories = {
+            'adventures': {
+                title: 'Our Adventures',
+                image: 'https://i.pinimg.com/1200x/04/83/57/0483579bb70855abcebe3f0e5f78302a.jpg',
+                description: 'At Pedal Legacy, adventure is at the heart of everything we do. From epic cross-country tours to challenging mountain ascents, our team is constantly exploring new horizons. We\'ve ridden through the majestic Alps, conquered the rocky trails of Moab, and experienced the serene beauty of Japanese countryside routes. Each adventure teaches us something new about cycling, about ourselves, and about the world around us. We bring these experiences back to our community, sharing insights, routes, and the pure joy of discovery that comes with every pedal stroke.'
+            },
+            'history': {
+                title: 'Our History',
+                image: 'https://i.pinimg.com/736x/49/d9/01/49d901607d0a69638d759b867498b9ff.jpg',
+                description: 'Pedal Legacy began in 2021 as a small bike repair shop in a garage, founded by two passionate cyclists who believed that every rider deserved access to quality equipment and expert advice. What started as a humble operation quickly grew into a community hub for cyclists of all levels. Over the years, we\'ve expanded our offerings, developed our own line of premium bicycles, and built relationships with the world\'s leading cycling brands. But our core mission remains unchanged: to fuel the passion for cycling and help riders create their own legacies, one ride at a time. Our journey continues, driven by the same love for cycling that started it all.'
+            },
+            'achievements': {
+                title: 'Our Achievements',
+                image: 'https://i.pinimg.com/1200x/18/c5/80/18c580bf243109174ff15de528a37a98.jpg',
+                description: 'Throughout our journey, Pedal Legacy has achieved significant milestones that reflect our commitment to excellence in cycling. We\'ve sponsored over 50 local cycling events, supported community cycling programs that have introduced thousands to the sport, and developed innovative bicycle designs that have won industry awards. Our team members have competed in and completed some of the world\'s most challenging cycling events, including the Tour Divide, Paris-Brest-Paris, and the Transcontinental Race. Most importantly, we\'ve helped countless riders achieve their personal cycling goals, from completing their first century ride to competing in professional races. These achievements fuel our passion to continue pushing boundaries in the cycling world.'
+            }
+        };
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize background rotation with slide effect
+            const heroBackgroundContainer = document.getElementById('hero-background-container');
+            let currentBgIndex = 0;
+            let nextBgIndex = 1;
+
+            // Create initial background elements
+            function initializeBackgrounds() {
+                // Create first background
+                const firstBg = document.createElement('div');
+                firstBg.className = 'hero-background active';
+                firstBg.style.backgroundImage = `url('${backgroundImages[0]}')`;
+                heroBackgroundContainer.appendChild(firstBg);
+
+                // Create second background
+                const secondBg = document.createElement('div');
+                secondBg.className = 'hero-background next';
+                secondBg.style.backgroundImage = `url('${backgroundImages[1]}')`;
+                heroBackgroundContainer.appendChild(secondBg);
+            }
+
+            function changeBackground() {
+                const backgrounds = document.querySelectorAll('.hero-background');
+
+                // Swap classes for slide effect
+                backgrounds[0].classList.remove('active');
+                backgrounds[0].classList.add('next');
+                backgrounds[1].classList.remove('next');
+                backgrounds[1].classList.add('active');
+
+                // Update background images for next transition
+                currentBgIndex = (currentBgIndex + 1) % backgroundImages.length;
+                nextBgIndex = (nextBgIndex + 1) % backgroundImages.length;
+
+                // Move the first background to the end and update its image
+                heroBackgroundContainer.appendChild(backgrounds[0]);
+                backgrounds[0].style.backgroundImage = `url('${backgroundImages[nextBgIndex]}')`;
+            }
+
+            // Initialize backgrounds and start rotation
+            initializeBackgrounds();
+            setInterval(changeBackground, 5000);
+
+            // Navigation functionality
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.section');
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+
+            // Navigation click handler
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    // Update active nav link
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Show corresponding section
+                    const targetId = this.getAttribute('href').substring(1);
+                    sections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === targetId) {
+                            section.classList.add('active');
+                        }
+                    });
+
+                    // Close mobile menu if open
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // Hamburger menu toggle
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Product detail modal functionality
+            const productModal = document.getElementById('product-modal');
+            const viewDetailButtons = document.querySelectorAll('.view-details');
+            const closeModalButtons = document.querySelectorAll('.close-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDescription = document.getElementById('modal-description');
+            const modalSpecs = document.getElementById('modal-specs');
+            const modalImg = document.getElementById('modal-img');
+            const quantityInput = document.querySelector('.quantity-input');
+            const decreaseBtn = document.querySelector('.quantity-btn.decrease');
+            const increaseBtn = document.querySelector('.quantity-btn.increase');
+            const addToCartBtn = document.querySelector('.add-to-cart');
+
+            let currentProduct = null;
+
+            // View product details
+            viewDetailButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const productId = this.getAttribute('data-product');
+                    currentProduct = products[productId];
+
+                    if (currentProduct) {
+                        // Update modal content
+                        modalTitle.textContent = currentProduct.title;
+                        modalDescription.textContent = currentProduct.description;
+
+                        // Clear and update specs
+                        modalSpecs.innerHTML = '';
+                        currentProduct.specs.forEach(spec => {
+                            const li = document.createElement('li');
+                            li.innerHTML = `<span class="spec-name">${spec.name}:</span><span class="spec-value">${spec.value}</span>`;
+                            modalSpecs.appendChild(li);
+                        });
+
+                        // Update main image
+                        modalImg.src = currentProduct.images[0];
+
+                        // Reset quantity
+                        quantityInput.value = 1;
+
+                        // Show modal
+                        productModal.classList.add('active');
+                    }
+                });
+            });
+
+            // Quantity controls
+            decreaseBtn.addEventListener('click', function() {
+                let value = parseInt(quantityInput.value);
+                if (value > 1) {
+                    quantityInput.value = value - 1;
+                }
+            });
+
+            increaseBtn.addEventListener('click', function() {
+                let value = parseInt(quantityInput.value);
+                if (value < 10) {
+                    quantityInput.value = value + 1;
+                }
+            });
+
+            // Add to cart functionality
+            addToCartBtn.addEventListener('click', function() {
+                if (currentProduct) {
+                    const quantity = parseInt(quantityInput.value);
+                    addToCart(currentProduct, quantity);
+                    productModal.classList.remove('active');
+
+                    // Show confirmation (you could add a toast notification here)
+                    alert(`${quantity} ${currentProduct.title} added to cart!`);
+                }
+            });
+
+            // Cart functionality
+            const cartModal = document.getElementById('cart-modal');
+            const cartIcon = document.querySelector('.cart-icon');
+            const cartCount = document.querySelector('.cart-count');
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            const cartItemCount = document.getElementById('cart-item-count');
+            const checkoutBtn = document.getElementById('checkout-btn');
+
+            let cart = [];
+
+            // Add to cart function
+            function addToCart(product, quantity) {
+                // Check if product already in cart
+                const existingItemIndex = cart.findIndex(item => item.id === product.title);
+
+                if (existingItemIndex !== -1) {
+                    // Update quantity if already in cart
+                    cart[existingItemIndex].quantity += quantity;
+                } else {
+                    // Add new item to cart
+                    cart.push({
+                        id: product.title,
+                        title: product.title,
+                        price: product.price,
+                        image: product.images[0],
+                        quantity: quantity
+                    });
+                }
+
+                updateCartDisplay();
+            }
+
+            // Update cart display
+            function updateCartDisplay() {
+                // Update cart count
+                const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                cartCount.textContent = totalItems;
+                cartItemCount.textContent = `${totalItems} ${totalItems === 1 ? 'item' : 'items'}`;
+
+                // Update cart items
+                cartItems.innerHTML = '';
+
+                if (cart.length === 0) {
+                    cartItems.innerHTML = '<p style="text-align: center; padding: 40px; color: #ccc;">Your cart is empty</p>';
+                } else {
+                    cart.forEach(item => {
+                        const cartItem = document.createElement('div');
+                        cartItem.className = 'cart-item';
+
+                        const itemTotal = (item.price * item.quantity).toFixed(2);
+
+                        cartItem.innerHTML = `
+                            <img src="${item.image}" alt="${item.title}" class="cart-item-img">
+                            <div class="cart-item-details">
+                                <h3 class="cart-item-title">${item.title}</h3>
+                                <div class="cart-item-price">₱${item.price.toFixed(2)}</div>
+                                <div class="cart-item-quantity">
+                                    <div class="quantity-controls-small">
+                                        <button class="quantity-btn-small decrease-item">-</button>
+                                        <input type="number" class="quantity-input-small" value="${item.quantity}" min="1" max="10" data-id="${item.id}">
+                                        <button class="quantity-btn-small increase-item">+</button>
+                                    </div>
+                                    <div class="cart-item-total">₱${itemTotal}</div>
+                                </div>
+                            </div>
+                            <button class="cart-item-remove" data-id="${item.id}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        `;
+
+                        cartItems.appendChild(cartItem);
+                    });
+
+                    // Add event listeners for cart item controls
+                    document.querySelectorAll('.decrease-item').forEach(btn => {
+                        btn.addEventListener('click', function() {
+                            const itemId = this.parentElement.querySelector('.quantity-input-small').getAttribute('data-id');
+                            updateCartItemQuantity(itemId, -1);
+                        });
+                    });
+
+                    document.querySelectorAll('.increase-item').forEach(btn => {
+                        btn.addEventListener('click', function() {
+                            const itemId = this.parentElement.querySelector('.quantity-input-small').getAttribute('data-id');
+                            updateCartItemQuantity(itemId, 1);
+                        });
+                    });
+
+                    document.querySelectorAll('.cart-item-remove').forEach(btn => {
+                        btn.addEventListener('click', function() {
+                            const itemId = this.getAttribute('data-id');
+                            removeFromCart(itemId);
+                        });
+                    });
+                }
+
+                // Update cart total
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                cartTotal.textContent = `₱${total.toFixed(2)}`;
+            }
+
+            // Update cart item quantity
+            function updateCartItemQuantity(itemId, change) {
+                const itemIndex = cart.findIndex(item => item.id === itemId);
+
+                if (itemIndex !== -1) {
+                    cart[itemIndex].quantity += change;
+
+                    // Remove item if quantity becomes 0
+                    if (cart[itemIndex].quantity <= 0) {
+                        cart.splice(itemIndex, 1);
+                    }
+
+                    updateCartDisplay();
+                }
+            }
+
+            // Remove from cart
+            function removeFromCart(itemId) {
+                cart = cart.filter(item => item.id !== itemId);
+                updateCartDisplay();
+            }
+
+            // Cart icon click
+            cartIcon.addEventListener('click', function() {
+                cartModal.classList.add('active');
+            });
+
+            // Checkout functionality
+            const checkoutModal = document.getElementById('checkout-modal');
+            const checkoutItems = document.getElementById('checkout-items');
+            const checkoutTotal = document.getElementById('checkout-total');
+            const customerForm = document.getElementById('customer-form');
+            const placeOrderBtn = document.getElementById('place-order');
+            const orderConfirmationModal = document.getElementById('order-confirmation-modal');
+            const orderId = document.getElementById('order-id');
+            const continueShoppingConfirm = document.getElementById('continue-shopping-confirm');
+
+            checkoutBtn.addEventListener('click', function() {
+                if (cart.length === 0) {
+                    alert('Your cart is empty!');
+                    return;
+                }
+
+                // Update checkout summary
+                checkoutItems.innerHTML = '';
+                let subtotal = 0;
+
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    subtotal += itemTotal;
+
+                    const checkoutItem = document.createElement('div');
+                    checkoutItem.className = 'checkout-item';
+                    checkoutItem.innerHTML = `
+                        <span>${item.title} x ${item.quantity}</span>
+                        <span>₱${itemTotal.toFixed(2)}</span>
+                    `;
+
+                    checkoutItems.appendChild(checkoutItem);
+                });
+
+                checkoutTotal.textContent = `₱${subtotal.toFixed(2)}`;
+
+                // Show checkout modal
+                cartModal.classList.remove('active');
+                checkoutModal.classList.add('active');
+            });
+
+            // Payment method selection
+            const paymentOptions = document.querySelectorAll('.payment-option');
+            const paymentDetailsSection = document.getElementById('payment-details');
+            const paymentInfoSections = document.querySelectorAll('.payment-info');
+
+            paymentOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selected class from all options
+                    paymentOptions.forEach(opt => opt.classList.remove('selected'));
+
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+
+                    // Get payment method
+                    const method = this.getAttribute('data-method');
+
+                    // Hide all payment info sections
+                    paymentInfoSections.forEach(section => {
+                        section.style.display = 'none';
+                    });
+
+                    // Show selected payment info
+                    const selectedInfo = document.getElementById(`${method}-info`);
+                    if (selectedInfo) {
+                        selectedInfo.style.display = 'block';
+                    }
+
+                    // Show payment details section
+                    paymentDetailsSection.classList.add('active');
+                });
+            });
+
+            // Place order
+            customerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Generate random order ID
+                const generatedOrderId = 'PL' + Math.floor(100000 + Math.random() * 900000);
+                orderId.textContent = generatedOrderId;
+
+                // Show confirmation modal
+                checkoutModal.classList.remove('active');
+                orderConfirmationModal.classList.add('active');
+
+                // Clear cart
+                cart = [];
+                updateCartDisplay();
+            });
+
+            // Continue shopping after order confirmation
+            continueShoppingConfirm.addEventListener('click', function() {
+                orderConfirmationModal.classList.remove('active');
+
+                // Reset form
+                customerForm.reset();
+
+                // Go to home section
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                document.querySelector('.nav-link[href="#home"]').classList.add('active');
+
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                    if (section.id === 'home') {
+                        section.classList.add('active');
+                    }
+                });
+            });
+
+            // Story modal functionality
+            const storyModal = document.getElementById('story-modal');
+            const viewStoryButtons = document.querySelectorAll('.view-story');
+            const storyTitle = document.getElementById('story-title');
+            const storyDescription = document.getElementById('story-description');
+            const storyImg = document.getElementById('story-img');
+
+            viewStoryButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const storyId = this.getAttribute('data-story');
+                    const story = stories[storyId];
+
+                    if (story) {
+                        storyTitle.textContent = story.title;
+                        storyDescription.textContent = story.description;
+                        storyImg.src = story.image;
+
+                        storyModal.classList.add('active');
+                    }
+                });
+            });
+
+            // Profile functionality
+            const profileEditModal = document.getElementById('profile-edit-modal');
+            const editProfileBtn = document.getElementById('edit-profile');
+            const profileForm = document.getElementById('profile-form');
+            const saveProfileBtn = document.getElementById('save-profile');
+            const profileAvatar = document.getElementById('profile-avatar');
+            const profileIcon = document.getElementById('profile-icon');
+            const removePhotoBtn = document.getElementById('remove-photo');
+
+            // Edit profile button
+            editProfileBtn.addEventListener('click', function() {
+                profileEditModal.classList.add('active');
+            });
+
+            // Profile picture upload functionality
+            profileAvatar.addEventListener('click', function(e) {
+                if (e.target.closest('.profile-avatar-upload')) {
+                    const input = document.createElement('input');
+                    input.type = 'file';
+                    input.accept = 'image/*';
+                    input.onchange = function(e) {
+                        const file = e.target.files[0];
+                        if (file) {
+                            const reader = new FileReader();
+                            reader.onload = function(e) {
+                                const img = document.createElement('img');
+                                img.src = e.target.result;
+                                profileAvatar.innerHTML = '';
+                                profileAvatar.appendChild(img);
+                                profileAvatar.appendChild(document.querySelector('.profile-avatar-upload'));
+                                profileAvatar.appendChild(document.querySelector('.profile-avatar-remove'));
+
+                                // Save to localStorage
+                                localStorage.setItem('profilePicture', e.target.result);
+                            };
+                            reader.readAsDataURL(file);
+                        }
+                    };
+                    input.click();
+                }
+            });
+
+            // Remove profile photo functionality
+            removePhotoBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                profileAvatar.innerHTML = '';
+                const icon = document.createElement('i');
+                icon.className = 'fas fa-user';
+                icon.id = 'profile-icon';
+                profileAvatar.appendChild(icon);
+                profileAvatar.appendChild(document.querySelector('.profile-avatar-upload'));
+                profileAvatar.appendChild(document.querySelector('.profile-avatar-remove'));
+
+                // Remove from localStorage
+                localStorage.removeItem('profilePicture');
+            });
+
+            // Load profile picture from localStorage if available
+            const savedProfilePicture = localStorage.getItem('profilePicture');
+            if (savedProfilePicture) {
+                const img = document.createElement('img');
+                img.src = savedProfilePicture;
+                profileAvatar.innerHTML = '';
+                profileAvatar.appendChild(img);
+                profileAvatar.appendChild(document.querySelector('.profile-avatar-upload'));
+                profileAvatar.appendChild(document.querySelector('.profile-avatar-remove'));
+            }
+
+            // Save profile
+            profileForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Get form values
+                const firstName = document.getElementById('profile-first-name').value;
+                const lastName = document.getElementById('profile-last-name').value;
+                const address = document.getElementById('profile-address').value;
+                const age = document.getElementById('profile-age').value;
+                const zip = document.getElementById('profile-zip').value;
+                const country = document.getElementById('profile-country').value;
+                const phone = document.getElementById('profile-phone').value;
+                const email = document.getElementById('profile-email').value;
+
+                // Update profile display (in a real app, you would save to a database)
+                const profileValues = document.querySelectorAll('.profile-value');
+
+                if (firstName || lastName) {
+                    profileValues[0].textContent = `${firstName} ${lastName}`;
+                    profileValues[0].classList.remove('profile-empty');
+                }
+
+                if (address) {
+                    profileValues[1].textContent = address;
+                    profileValues[1].classList.remove('profile-empty');
+                }
+
+                if (age) {
+                    profileValues[2].textContent = age;
+                    profileValues[2].classList.remove('profile-empty');
+                }
+
+                if (zip) {
+                    profileValues[3].textContent = zip;
+                    profileValues[3].classList.remove('profile-empty');
+                }
+
+                if (country) {
+                    profileValues[4].textContent = country;
+                    profileValues[4].classList.remove('profile-empty');
+                }
+
+                if (phone) {
+                    profileValues[5].textContent = phone;
+                    profileValues[5].classList.remove('profile-empty');
+                }
+
+                if (email) {
+                    profileValues[6].textContent = email;
+                    profileValues[6].classList.remove('profile-empty');
+                }
+
+                // Close modal
+                profileEditModal.classList.remove('active');
+
+                // Show confirmation
+                alert('Profile updated successfully!');
+            });
+
+            // Close modals
+            closeModalButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    document.querySelectorAll('.modal').forEach(modal => {
+                        modal.classList.remove('active');
+                    });
+                });
+            });
+
+            // Close modals when clicking outside
+            window.addEventListener('click', function(e) {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    if (e.target === modal) {
+                        modal.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

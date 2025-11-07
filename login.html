@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PedalLegacy | Login</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: url('https://i.pinimg.com/1200x/18/10/60/1810608b59d2966ea10aec2ccbe43b10.jpg')
+                        no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        .container {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 12px;
+            width: 350px;
+            box-shadow: 0 0 20px rgba(231, 76, 60, 0.5);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #FF8C00;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 6px;
+            background: #222;
+            color: white;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #ff5b4a;
+        }
+        .switch {
+            text-align: center;
+            margin-top: 10px;
+            cursor: pointer;
+            color: #FF8C00;
+            font-size: 14px;
+        }
+        #registerForm {
+            display: none;
+        }
+        .message {
+            text-align: center;
+            color: #f44336;
+            margin-bottom: 10px;
+        }
+        .logo {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+        .logo span {
+            color: #FF8C00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">Pedal<span>Legacy</span></div>
+        <h2 id="formTitle">Login</h2>
+
+        {% if message %}
+        <div class="message">{{ message }}</div>
+        {% endif %}
+
+        <!-- LOGIN FORM -->
+        <form id="loginForm" method="POST" action="/login">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+            <div class="switch" onclick="toggleForm()">Create an account</div>
+        </form>
+
+        <!-- REGISTER FORM -->
+        <form id="registerForm" method="POST" action="/register">
+            <input type="text" name="first_name" placeholder="First Name" required>
+            <input type="text" name="last_name" placeholder="Last Name" required>
+            <input type="number" name="age" placeholder="Age" required>
+            <input type="text" name="address" placeholder="Address" required>
+            <input type="text" name="zip_code" placeholder="ZIP Code" required>
+            <input type="text" name="country" placeholder="Country" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Register</button>
+            <div class="switch" onclick="toggleForm()">Already have an account?</div>
+        </form>
+    </div>
+
+    <script>
+        function toggleForm() {
+            const login = document.getElementById('loginForm');
+            const register = document.getElementById('registerForm');
+            const title = document.getElementById('formTitle');
+            if (login.style.display === 'none') {
+                login.style.display = 'block';
+                register.style.display = 'none';
+                title.innerText = 'Login';
+            } else {
+                login.style.display = 'none';
+                register.style.display = 'block';
+                title.innerText = 'Register';
+            }
+        }
+    </script>
+</body>
+</html>
